@@ -10,11 +10,30 @@ from config import (
 
 if TYPE_CHECKING:
     from pika.adapters.blocking_connection import BlockingChannel
+    from pika.spec import Basic, BasicProperties
+
 
 log = logging.getLogger(__name__)
 
 
+def process_new_message(
+    ch: "BlockingChannel",
+    method: "Basic.Deliver",
+    properties: "BasicProperties",
+    body: bytes,
+):
+    log.info("ch: %s", )
+    log.info("method %s")
+    log.info()
+    log.info()
+
+
 def consume_messages(channel: "BlockingChannel") -> None:
+    channel.basic_consume(
+        queue=MQ_ROUTING_KEY,
+        on_message_callback=process_new_message,
+
+    )
 
 
 def main():
