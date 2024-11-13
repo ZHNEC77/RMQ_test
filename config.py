@@ -2,7 +2,7 @@ import logging
 import pika
 
 
-RMQ_HOST = "lacalhost"
+RMQ_HOST = "localhost"
 RMQ_PORT = 5672
 
 RMQ_USER = "guest"
@@ -29,5 +29,6 @@ def configure_logging(level: int = logging.INFO):
     logging.basicConfig(
         level=level,
         datefmt="%Y-%m-%d %H:%M:%S",
-        format="[%(asctime)s.%(msecs)03d] %(funcName)20s %(module)s:%(lineno)d %(levelname)-8s - %(message)s",
+        # format="[%(asctime)s.%(msecs)03d] %(funcName)20s %(module)s:%(lineno)d %(levelname)-8s - %(message)s",
+        format="%(message)s",
     )
